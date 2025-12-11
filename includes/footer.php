@@ -95,6 +95,75 @@
 <!-- JavaScript -->
 <script src="<?php echo SITE_URL; ?>/assets/js/main.js"></script>
 
+<!-- Modal & Auth Handlers -->
+<script>
+// Initialize modals after DOM loads
+let loginModal, signupModal;
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Modal instances
+    loginModal = new Modal('loginModal');
+    signupModal = new Modal('signupModal');
+});
+
+// Global functions for opening modals
+function openLoginModal() {
+    if (signupModal) signupModal.close();
+    if (loginModal) loginModal.open();
+}
+
+function openSignupModal() {
+    if (loginModal) loginModal.close();
+    if (signupModal) signupModal.open();
+}
+
+// Login Form Handler
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        App.showLoading(btn);
+
+        const formData = new FormData(e.target);
+        const response = await App.request('/auth/login.php', {
+            method: 'POST',
+            body: JSON.stringify(Object.fromEntries(formData))
+        });
+
+        App.hideLoading(btn);
+
+        if (response.success) {
+            App.showToast('Login successful!', 'success');
+            setTimeout(() => window.location.reload(), 1000);
+        } else {
+            App.showToast(response.error || 'Login failed', 'error');
+        }
+    });
+
+    // Signup Form Handler
+    document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        App.showLoading(btn);
+
+        const formData = new FormData(e.target);
+        const response = await App.request('/auth/signup.php', {
+            method: 'POST',
+            body: JSON.stringify(Object.fromEntries(formData))
+        });
+
+        App.hideLoading(btn);
+
+        if (response.success) {
+            App.showToast('Account created successfully!', 'success');
+            setTimeout(() => window.location.reload(), 1000);
+        } else {
+            App.showToast(response.error || 'Signup failed', 'error');
+        }
+    });
+});
+</script>
+
 <!-- Newsletter Form Handler -->
 <script>
 document.getElementById('newsletterForm')?.addEventListener('submit', async (e) => {

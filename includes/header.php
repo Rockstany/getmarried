@@ -17,7 +17,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
     <title><?php echo $pageTitle ?? 'GetMarried.site - Budget Wedding Planner & Pre-Owned Outfits'; ?></title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo SITE_URL; ?>/assets/images/favicon.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
 
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/style.css">
@@ -113,8 +113,8 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 </div>
 
 <!-- Login Modal -->
-<div id="loginModal" class="modal-overlay hidden">
-    <div class="modal">
+<div class="modal-overlay hidden">
+    <div class="modal" id="loginModal">
         <div class="modal-header">
             <h3>Welcome Back</h3>
             <button data-close-modal aria-label="Close">&times;</button>
@@ -139,8 +139,8 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 </div>
 
 <!-- Signup Modal -->
-<div id="signupModal" class="modal-overlay hidden">
-    <div class="modal">
+<div class="modal-overlay hidden">
+    <div class="modal" id="signupModal">
         <div class="modal-header">
             <h3>Create Account</h3>
             <button data-close-modal aria-label="Close">&times;</button>
@@ -171,95 +171,6 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
         </div>
     </div>
 </div>
-
-<script>
-// Modal Controls
-const loginModal = new Modal('loginModal');
-const signupModal = new Modal('signupModal');
-
-function openLoginModal() {
-    signupModal.close();
-    loginModal.open();
-}
-
-function openSignupModal() {
-    loginModal.close();
-    signupModal.open();
-}
-
-// Login Form Handler
-document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    App.showLoading(btn);
-
-    const formData = new FormData(e.target);
-    const response = await App.request('/auth/login.php', {
-        method: 'POST',
-        body: JSON.stringify(Object.fromEntries(formData))
-    });
-
-    App.hideLoading(btn);
-
-    if (response.success) {
-        App.showToast('Login successful!', 'success');
-        setTimeout(() => window.location.reload(), 1000);
-    } else {
-        App.showToast(response.error || 'Login failed', 'error');
-    }
-});
-
-// Signup Form Handler
-document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    App.showLoading(btn);
-
-    const formData = new FormData(e.target);
-    const response = await App.request('/auth/signup.php', {
-        method: 'POST',
-        body: JSON.stringify(Object.fromEntries(formData))
-    });
-
-    App.hideLoading(btn);
-
-    if (response.success) {
-        App.showToast('Account created successfully!', 'success');
-        setTimeout(() => window.location.reload(), 1000);
-    } else {
-        App.showToast(response.error || 'Signup failed', 'error');
-    }
-});
-
-// 🔧 MODAL CLOSE FIX
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-close-modal]').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const modal = this.closest('.modal-overlay');
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(m => m.classList.add('hidden'));
-            document.body.style.overflow = '';
-        }
-    });
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                overlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-});
-</script>
 
 <!-- Main Content -->
 <main>
