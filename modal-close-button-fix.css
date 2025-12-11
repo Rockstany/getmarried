@@ -1,0 +1,24 @@
+/* Add this CSS to assets/css/style.css after .modal-header */
+
+/* Modal close button styling */
+.modal-header button[data-close-modal] {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.modal-header button[data-close-modal]:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
