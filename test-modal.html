@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Test</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { padding: 20px; }
+        .test-btn { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Modal Close Button Test</h1>
+    <button class="btn btn-primary test-btn" onclick="testModal.open()">Open Test Modal</button>
+
+    <!-- Test Modal -->
+    <div id="testModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Test Modal</h3>
+                <button data-close-modal aria-label="Close" style="font-size: 2rem; cursor: pointer; background: none; border: none;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>Test Close Methods:</h4>
+                <ol>
+                    <li>Click the X button (top right)</li>
+                    <li>Press ESC key</li>
+                    <li>Click outside the modal (on dark area)</li>
+                    <li>Click the button below</li>
+                </ol>
+                <button class="btn btn-secondary" onclick="testModal.close()">Close Modal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('🔍 Modal Test Page Loaded');
+
+        // Simple Modal Class
+        class SimpleModal {
+            constructor(id) {
+                this.modal = document.getElementById(id);
+                this.overlay = this.modal?.closest('.modal-overlay');
+                this.closeButtons = this.modal?.querySelectorAll('[data-close-modal]');
+
+                console.log('Modal elements:', {
+                    modal: !!this.modal,
+                    overlay: !!this.overlay,
+                    closeButtons: this.closeButtons?.length
+                });
+
+                this.init();
+            }
+
+            init() {
+                if (!this.modal) {
+                    console.error('Modal not found!');
+                    return;
+                }
+
+                // Close on overlay click
+                this.overlay?.addEventListener('click', (e) => {
+                    console.log('Overlay clicked');
+                    if (e.target === this.overlay) {
+                        this.close();
+                    }
+                });
+
+                // Close on button click
+                this.closeButtons?.forEach((btn, index) => {
+                    console.log(`Adding listener to close button ${index}`);
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        console.log('Close button clicked!');
+                        this.close();
+                    });
+                });
+
+                // Close on ESC key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !this.overlay.classList.contains('hidden')) {
+                        console.log('ESC pressed');
+                        this.close();
+                    }
+                });
+
+                console.log('✅ Modal initialized');
+            }
+
+            open() {
+                console.log('Opening modal');
+                this.overlay?.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            close() {
+                console.log('Closing modal');
+                this.overlay?.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Create modal instance
+        const testModal = new SimpleModal('testModal');
+
+        console.log('testModal instance:', testModal);
+    </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
 
 // Global App Object
 const App = {
-    apiBase: '/getMarried/api',
+    apiBase: '/api',
 
     // API Request Helper
     async request(endpoint, options = {}) {
