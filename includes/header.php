@@ -230,7 +230,6 @@ document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
         App.showToast(response.error || 'Signup failed', 'error');
     }
 });
-</script>
 
 // 🔧 MODAL CLOSE FIX
 document.addEventListener('DOMContentLoaded', () => {
