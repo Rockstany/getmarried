@@ -198,7 +198,9 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    min-height: 60px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .logo {
@@ -206,6 +208,8 @@ p {
     font-weight: 700;
     color: var(--primary);
     font-family: var(--font-heading);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* Mobile Navigation */

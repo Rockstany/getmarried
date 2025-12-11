@@ -26,47 +26,41 @@ try {
 <!-- Hero Section -->
 <section class="section bg-secondary" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 4rem 0;">
     <div class="container">
-        <div class="grid grid-cols-1 grid-cols-lg-2 gap-lg items-center">
-            <div>
-                <h1 style="color: white; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem;">
-                    Your Dream Wedding, Your Budget
-                </h1>
-                <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">
-                    Plan the perfect wedding without breaking the bank. Get instant budget breakdowns and shop beautiful pre-owned wedding outfits.
-                </p>
-                <div class="flex flex-wrap gap-md">
-                    <a href="<?php echo SITE_URL; ?>/planner.php" class="btn btn-lg" style="background: white; color: var(--primary);">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M7.5 7.5A.5.5 0 0 1 8 8v4a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5z"/>
-                            <path d="M8 3.5a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
-                        </svg>
-                        Start Planning Free
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>/marketplace.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
-                        Shop Pre-Owned
-                    </a>
-                </div>
-
-                <!-- Trust Indicators -->
-                <div class="flex flex-wrap gap-lg mt-xl" style="opacity: 0.9;">
-                    <div>
-                        <div style="font-size: 2rem; font-weight: 700;">500+</div>
-                        <div style="font-size: 0.875rem;">Weddings Planned</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 2rem; font-weight: 700;">₹1L+</div>
-                        <div style="font-size: 0.875rem;">Avg. Savings</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 2rem; font-weight: 700;">1000+</div>
-                        <div style="font-size: 0.875rem;">Outfits Listed</div>
-                    </div>
-                </div>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h1 style="color: white; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem;">
+                Your Dream Wedding, Your Budget
+            </h1>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">
+                Plan the perfect wedding without breaking the bank. Get instant budget breakdowns and shop beautiful pre-owned wedding outfits.
+            </p>
+            <div class="flex flex-wrap gap-md" style="justify-content: center;">
+                <a href="<?php echo SITE_URL; ?>/planner.php" class="btn btn-lg" style="background: white; color: var(--primary);">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px;">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M7.5 7.5A.5.5 0 0 1 8 8v4a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M8 3.5a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    Start Planning Free
+                </a>
+                <a href="<?php echo SITE_URL; ?>/marketplace.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+                    Shop Pre-Owned
+                </a>
             </div>
 
-            <div class="hide-mobile">
-                <img src="<?php echo SITE_URL; ?>/assets/images/hero-illustration.svg" alt="Wedding Planning" style="width: 100%; max-width: 500px; margin: 0 auto;">
+            <!-- Trust Indicators -->
+            <div class="flex flex-wrap gap-lg mt-xl" style="opacity: 0.9; justify-content: center;">
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700;">500+</div>
+                    <div style="font-size: 0.875rem;">Weddings Planned</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700;">₹1L+</div>
+                    <div style="font-size: 0.875rem;">Avg. Savings</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: 700;">1000+</div>
+                    <div style="font-size: 0.875rem;">Outfits Listed</div>
+                </div>
             </div>
         </div>
     </div>
