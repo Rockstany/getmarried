@@ -97,28 +97,68 @@
 
 <!-- Modal & Auth Handlers -->
 <script>
-// Initialize modals after DOM loads
-let loginModal, signupModal;
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Modal instances
-    loginModal = new Modal('loginModal');
-    signupModal = new Modal('signupModal');
-});
-
-// Global functions for opening modals
+// SIMPLE MODAL FUNCTIONS - No complex classes
 function openLoginModal() {
-    if (signupModal) signupModal.close();
-    if (loginModal) loginModal.open();
+    console.log('Opening login modal');
+    closeAllModals();
+    const modal = document.querySelector('#loginModal').closest('.modal-overlay');
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function openSignupModal() {
-    if (loginModal) loginModal.close();
-    if (signupModal) signupModal.open();
+    console.log('Opening signup modal');
+    closeAllModals();
+    const modal = document.querySelector('#signupModal').closest('.modal-overlay');
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
-// Login Form Handler
+function closeAllModals() {
+    console.log('Closing all modals');
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.classList.add('hidden');
+    });
+    document.body.style.overflow = '';
+}
+
+// Initialize modal close handlers after DOM loads
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Setting up modal close handlers');
+
+    // Close button handlers (X button)
+    document.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('X button clicked');
+            closeAllModals();
+        });
+    });
+
+    // ESC key handler
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            console.log('ESC key pressed');
+            closeAllModals();
+        }
+    });
+
+    // Click outside modal handler
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                console.log('Clicked outside modal');
+                closeAllModals();
+            }
+        });
+    });
+
+    // Login Form Handler
     document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button[type="submit"]');
@@ -134,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.success) {
             App.showToast('Login successful!', 'success');
+            closeAllModals();
             setTimeout(() => window.location.reload(), 1000);
         } else {
             App.showToast(response.error || 'Login failed', 'error');
@@ -156,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.success) {
             App.showToast('Account created successfully!', 'success');
+            closeAllModals();
             setTimeout(() => window.location.reload(), 1000);
         } else {
             App.showToast(response.error || 'Signup failed', 'error');
