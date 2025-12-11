@@ -5,17 +5,17 @@
  */
 
 // Environment (development/production)
-define('ENVIRONMENT', 'development');
+define('ENVIRONMENT', 'production');
 
 // Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'getmarried_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', '127.0.0.1:3306');
+define('DB_NAME', 'u717011923_getmarried');
+define('DB_USER', 'u717011923_getmarried');  // ⚠️ UPDATE THIS with your Hostinger DB user
+define('DB_PASS', 'zxc12345+A');      // ⚠️ UPDATE THIS with your Hostinger DB password
 define('DB_CHARSET', 'utf8mb4');
 
 // Site Configuration
-define('SITE_URL', 'http://localhost/getMarried');
+define('SITE_URL', 'https://getmarried.site');
 define('SITE_NAME', 'GetMarried.site');
 define('SITE_EMAIL', 'hello@getmarried.site');
 
