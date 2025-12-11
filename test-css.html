@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test - GetMarried.site</title>
+
+    <!-- Test CSS with relative path -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <a href="#" class="logo">GetMarried</a>
+                <nav class="nav-desktop">
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Plan</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" style="background: linear-gradient(135deg, #d946ef 0%, #ec4899 100%); color: white; padding: 4rem 0;">
+            <div class="container text-center">
+                <h1 style="color: white; font-size: 3rem; margin-bottom: 1.5rem;">CSS Test Page</h1>
+                <p style="font-size: 1.25rem; margin-bottom: 2rem;">
+                    If you can see colors and styling, CSS is working! ✅
+                </p>
+                <div class="flex gap-md justify-center">
+                    <button class="btn btn-lg" style="background: white; color: #d946ef;">
+                        Primary Button
+                    </button>
+                    <button class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+                        Outline Button
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center mb-xl">CSS Components Test</h2>
+
+                <div class="grid grid-cols-1 grid-cols-sm-2 grid-cols-lg-3 gap-md">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Card 1</h3>
+                            <p class="card-text">This is a test card with shadow and hover effects.</p>
+                            <button class="btn btn-primary">Click Me</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Card 2</h3>
+                            <p class="card-text">CSS is loaded correctly!</p>
+                            <span class="badge badge-success">Success</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Card 3</h3>
+                            <p class="card-text">Responsive grid working.</p>
+                            <span class="badge badge-primary">Primary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="card" style="padding: 2rem; background: white;">
+                    <h3 class="mb-md">Form Test</h3>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="test@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="••••••••">
+                    </div>
+                    <button class="btn btn-primary btn-block">Submit</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>© 2025 GetMarried.site - CSS Test Page</p>
+            <p style="margin-top: 1rem; color: rgba(255,255,255,0.8);">
+                <strong>If you see this styled:</strong> ✅ CSS is working!<br>
+                <strong>If it's plain text:</strong> ❌ CSS path is wrong
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Test JS loading
+        console.log('✅ JavaScript is working!');
+        alert('✅ If you see styled page with colors, CSS is loaded correctly!\n\n❌ If it looks plain, CSS path needs fixing.');
+    </script>
+</body>
+</html>
